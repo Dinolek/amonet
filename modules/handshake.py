@@ -8,7 +8,7 @@ def handshake(dev, disable_watchdog=False):
     dev.handshake()
     if disable_watchdog:
         log("Disable watchdog")
-        dev.write32(0x10212000, 0x22000000)
+        dev.write32(0x10007000, 0x22000000)
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:

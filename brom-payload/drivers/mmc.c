@@ -885,8 +885,8 @@ int mmc_init(struct msdc_host *host) {
     host->blksz = 0x200;
 
     // power up msdc0
-    msdc_set_field(MSDC0_GPIO_PUPD0_G5_ADDR, MSDC0_PUPD_CMD_DSL_CLK_DAT04_MASK, 0x11111661);
-    msdc_set_field(MSDC0_GPIO_PUPD1_G5_ADDR, MSDC0_PUPD_DAT57_RSTB_MASK, 0x2111);
+    //msdc_set_field(MSDC0_GPIO_PUPD0_G5_ADDR, MSDC0_PUPD_CMD_DSL_CLK_DAT04_MASK, 0x11111661);
+    //msdc_set_field(MSDC0_GPIO_PUPD1_G5_ADDR, MSDC0_PUPD_DAT57_RSTB_MASK, 0x2111);
 
     sdr_set_bits(MSDC_CFG, MSDC_CFG_PIO);
     sleepy();

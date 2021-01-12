@@ -104,7 +104,7 @@ def load_payload(dev, path, dump_bootrom=False):
                 dump.write((aes_read16(dev, x)))
 
     log("Disable bootrom range checks")
-    aes_write16(dev, 0x102760, bytes.fromhex("00000000000000000000000080000000"))
+    aes_write16(dev, 0x102764, bytes.fromhex("00000000000000000000000080000000"))
 
     with open(path, "rb") as fin:
         payload = fin.read()
@@ -118,12 +118,12 @@ def load_payload(dev, path, dump_bootrom=False):
         word = struct.unpack("<I", word)[0]
         words.append(word)
 
-    load_addr = 0x221000
+    load_addr = 0x228500
     log("Send payload")
     dev.write32(load_addr, words)
 
     log("Let's rock")
-    dev.write32(0x1027A0, load_addr, status_check=False)
+    dev.write32(0x1027A4, load_addr, status_check=False)
 
     log("Wait for the payload to come online...")
     dev.wait_payload()

@@ -10,7 +10,7 @@ from logger import log
 BAUD = 115200
 TIMEOUT = 5
 
-CRYPTO_BASE = 0x10216000 # for mblu2
+CRYPTO_BASE = 0x10210000 # for hermes
 
 def serial_ports ():
     """ Lists available serial ports

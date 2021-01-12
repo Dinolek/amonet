@@ -55,14 +55,14 @@ int main() {
     char buf[0x200] = { 0 };
     int ret = 0;
 
-    int (*send_dword)() = (void*)0x9513;
-    int (*recv_dword)() = (void*)0x94DF;
-    int (*send_data)() = (void*)0x95DB;
-    int (*recv_data)() = (void*)0x9555;
+    int (*send_dword)() = (void*)0x96A7;
+    int (*recv_dword)() = (void*)0x9673;
+    int (*send_data)() = (void*)0x976F;
+    int (*recv_data)() = (void*)0x96E9;
 
     // Restore the pointer we overwrote
-    uint32_t *ptr_send = (void*)0x1027A0;
-    *ptr_send = 0x3509;
+    uint32_t *ptr_send = (void*)0x1027A4;
+    *ptr_send = 0x31C3;
 
     printf("Entered the payload\n");
 
@@ -130,7 +130,7 @@ int main() {
         }
         case 0x3000: {
             printf("Reboot\n");
-            volatile uint32_t *reg = (volatile uint32_t *)0x10212000;
+            volatile uint32_t *reg = (volatile uint32_t *)0x10007000;
             reg[8/4] = 0x1971;
             reg[0/4] = 0x22000014;
             reg[0x14/4] = 0x1209;
@@ -141,7 +141,7 @@ int main() {
         }
         case 0x3001: {
             printf("Kick watchdog\n");
-            volatile uint32_t *reg = (volatile uint32_t *)0x10212000;
+            volatile uint32_t *reg = (volatile uint32_t *)0x10007000;
             reg[8/4] = 0x1971;
             break;
         }
